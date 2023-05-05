@@ -1,5 +1,7 @@
 'use client';
-import { SessionProvider } from 'next-auth/react';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import { SessionProvider, useSession } from 'next-auth/react';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -13,7 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

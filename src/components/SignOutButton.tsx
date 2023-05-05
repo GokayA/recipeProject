@@ -3,7 +3,14 @@
 import { signOut } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 
-const SignOutButton = () => {
+interface SignOutButtonProps {
+  className?: string;
+  children?: string;
+}
+
+const SignOutButton = ({
+  className,
+}: SignOutButtonProps): React.ReactElement => {
   const signOuthandler = async () => {
     try {
       await signOut();
@@ -14,6 +21,10 @@ const SignOutButton = () => {
     }
   };
 
-  return <button onClick={signOuthandler}>Sign Out</button>;
+  return (
+    <button className={className} onClick={signOuthandler}>
+      Sign Out
+    </button>
+  );
 };
 export default SignOutButton;

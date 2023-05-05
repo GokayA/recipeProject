@@ -9,7 +9,7 @@ const page = async () => {
     <div>
       {session ? (
         <>
-          <Link href="/dashboard">Dashboard</Link>
+          <Link href="/">Dashboard</Link>
           signout
           {/* <SignOutButton /> */}
         </>

@@ -46,4 +46,20 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Recipe        Recipe[]
+}
+
+model Recipe {
+  id           String   @id @default(cuid())
+  title        String
+  servingSize  String
+  prepTime     String
+  cookingTime  String
+  description  String
+  image        String
+  instructions String
+  isPublic     Boolean  @default(true)
+  author       User     @relation(fields: [authorId], references: [id])
+  authorId     String
+  createdAt    DateTime @default(now())
 }
