@@ -4,18 +4,22 @@ import React from 'react';
 type RecipeCardProps = {
   title: string;
   image: string;
-  servings: number;
-  prepTime: number;
-  cookTime: number;
+  servingSize: string;
+  prepTime: string;
+  cookingTime: string;
+  description?: string;
+  instructions?: string;
+  isPublic?: boolean;
   author: string;
+  authorId?: number;
 };
 
 const RecipeCard = ({
   title,
   image,
-  servings,
+  servingSize,
   prepTime,
-  cookTime,
+  cookingTime,
   author,
 }: RecipeCardProps) => {
   return (
@@ -23,7 +27,7 @@ const RecipeCard = ({
       <Image src={image} alt="foodImage" width={400} height={400} />
       <h1 className="text-2xl font-bold mb-2">{title}</h1>
       <p className="text-gray-700 text-lg mb-4">
-        {servings} servings | {prepTime} min prep | {cookTime} min cook
+        {servingSize} servings | {prepTime} min prep | {cookingTime} min cook
       </p>
       <hr className="my-4" />
       <p className="text-gray-700 text-lg">By {author}</p>

@@ -6,28 +6,19 @@ import { getServerSession } from 'next-auth';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
+  const userId =
+    typeof req.query.userId === 'string' ? req.query.userId : undefined;
   if (!session) {
     res.status(401).json({ message: 'Unauthorized' });
     return;
   }
   try {
     const publicRecipes = await db.recipe.findMany({
-      where: { isPublic: true },
-      select: {
-        id: true,
-        title: true,
-        servingSize: true,
-        prepTime: true,
-        cookingTime: true,
-        description: true,
-        image: true,
-        instructions: true,
-        isPublic: true,
-        author: {
-          select: {
-            name: true,
-          },
-        },
+      where: {
+        authorId: userId,
+      },
+      include: {
+        author: true,
       },
     });
 

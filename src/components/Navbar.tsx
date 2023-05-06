@@ -38,7 +38,7 @@ export default function Navbar() {
               href="/recipe"
               className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
             >
-              Recipes
+              Add Recipes
             </Link>
             <Link
               className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
@@ -93,6 +93,13 @@ export default function Navbar() {
           <div className="hidden md:ml-6 sm:flex sm:space-x-8">
             {session ? (
               <>
+                <Link
+                  href="/profile"
+                  onClick={() => setIsMenuOpen(false)}
+                  className=" border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                >
+                  Profile
+                </Link>
                 <SignOutButton className=" border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" />
               </>
             ) : (
@@ -155,7 +162,7 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(false)}
             className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium"
           >
-            Recipes
+            Add Recipes
           </Link>
           <Link
             href="/categories"
@@ -180,7 +187,7 @@ export default function Navbar() {
               >
                 Profile
               </Link>
-              <SignOutButton className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
+              <SignOutButton className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium" />
             </>
           ) : (
             <SignInButton className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
