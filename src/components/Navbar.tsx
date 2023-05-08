@@ -6,10 +6,6 @@ import { useState } from 'react';
 import SignInButton from './SignInButton';
 import SignOutButton from './SignOutButton';
 
-interface NavbarProps {
-  session: any; // NEED TO FIX TYPE FOR THIS ONE DID ANY FOR NOW...
-}
-
 export default function Navbar() {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +13,7 @@ export default function Navbar() {
 
   const handleSearch = (event: any) => {
     event.preventDefault();
-    console.log(`Searching for: ${searchQuery}`);
+    console.log(`navbar Searching for: ${searchQuery}`);
   };
 
   return (
@@ -65,7 +61,7 @@ export default function Navbar() {
                 name="search"
                 type="search"
                 placeholder="Search"
-                className="block w-full bg-gray-100 border-gray-300 rounded-md py-2 px-4 sm:text-sm"
+                className="block w-full text-gray-900 font-bold bg-gray-100 border-gray-300 rounded-md py-2 px-4 sm:text-sm"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

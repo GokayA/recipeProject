@@ -26,11 +26,6 @@ const RecipeCard = ({
   author,
   href,
 }: RecipeCardProps) => {
-  const { data: session } = useSession();
-  const deleteHandler = () => {
-    console.log('deleted');
-  };
-
   return (
     <div className="bg-white rounded-lg shadow-md p-6 mb-6 border-green-400 border-b">
       <Link href={href}>

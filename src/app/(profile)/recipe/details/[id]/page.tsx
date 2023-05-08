@@ -1,7 +1,7 @@
 'use client';
 import DeleteButton from '@/components/DeleteButton';
 import { Recipe } from '@prisma/client';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -24,6 +24,28 @@ function RecipeDetails({ params }: { params: { id: string } }) {
     },
   });
 
+  const deleteRecipe = useMutation({
+    mutationKey: ['deleteRecipe', params.id],
+    mutationFn: async () => {
+      const { data } = await axios.delete(`/api/delete/${params.id}`);
+      return data;
+    },
+    onSuccess: () => {
+      router.push('/profile');
+    },
+    onError: (error) => {
+      console.error('An error occurred while deleting the recipe:', error);
+    },
+  });
+
+  const deleteHandler = async () => {
+    try {
+      await deleteRecipe.mutateAsync();
+    } catch (error) {
+      console.error('An error occurred while deleting the recipe:', error);
+    }
+  };
+
   if (isLoading) {
     return <div className="min-h-screen "></div>;
   }
@@ -32,21 +54,6 @@ function RecipeDetails({ params }: { params: { id: string } }) {
     return <div>No recipe found</div>;
   }
   const { recipe, newInstructions } = data;
-
-  const deleteHandler = async () => {
-    const confirmDelete = window.confirm(
-      'Are you sure you want to delete this recipe?'
-    );
-    if (confirmDelete) {
-      setIsDeleting(true);
-      await axios
-        .delete(`/api/recipe/delete/${params.id}/`)
-        .then(() => {
-          router.push('http://localhost:3000/profile');
-        })
-        .catch(() => console.log('error'));
-    }
-  };
 
   const filteredInstructions = newInstructions.filter(
     (instruction: string) => instruction !== ''

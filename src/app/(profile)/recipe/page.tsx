@@ -50,7 +50,6 @@ const NewRecipeForm = () => {
         prepTime: selectedPrepTime,
         cookingTime: selectedCookTime,
       });
-      console.log(response.data);
     } catch (error) {
       if (error instanceof AxiosError) {
         console.error(error.response?.data);

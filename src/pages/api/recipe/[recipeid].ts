@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const recipeId = req.query.recipeid as string;
-  console.log('check', recipeId);
 
   try {
     const recipebyId = await db.recipe.findUnique({
