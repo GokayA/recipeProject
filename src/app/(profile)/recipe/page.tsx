@@ -1,4 +1,5 @@
 'use client';
+import SignInButton from '@/components/SignInButton';
 import axios, { AxiosError } from 'axios';
 import { useSession } from 'next-auth/react';
 import { FormEvent, useState } from 'react';
@@ -59,11 +60,16 @@ const NewRecipeForm = () => {
   };
 
   if (!session) {
-    return <div>You must be logged in to add a recipe</div>;
+    return (
+      <div className=" min-h-screen text-center px-10 py-10 text-red-800 text-bold text-2xl">
+        <h1>You must be logged in</h1>
+        <SignInButton className="border-transparent rounded-full my-10 bg-slate-800 text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col min-h-screen ">
+    <div className="  flex flex-col min-h-screen ">
       <div className="flex-grow flex flex-col justify-center items-center  ">
         <h1 className="text-3xl py-10">Recipe Information</h1>
         <form onSubmit={handleSubmit} className="w-full max-w-md">

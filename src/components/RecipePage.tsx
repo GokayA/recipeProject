@@ -3,6 +3,7 @@ import { Recipe, User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+
 import RecipeCard from './RecipeCard';
 
 interface RecipeWithAuthor extends Recipe {
@@ -19,8 +20,8 @@ const RecipePage = () => {
   );
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-grow">
+    <main className="min-h-screen flex flex-col">
+      <div className="flex-grow ">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-row">
             <svg
@@ -45,21 +46,23 @@ const RecipePage = () => {
           ) : (
             <div className="flex flex-wrap gap-4">
               {data?.map((recipe: RecipeWithAuthor) => (
-                <RecipeCard
-                  key={recipe.id}
-                  title={recipe.title}
-                  image={recipe.image}
-                  servingSize={recipe.servingSize}
-                  prepTime={recipe.prepTime}
-                  cookingTime={recipe.cookingTime}
-                  author={recipe.author.name || 'Unknown'}
-                />
+                <React.Fragment key={recipe.id}>
+                  <RecipeCard
+                    href={`/recipe/details/${recipe.id}`}
+                    title={recipe.title}
+                    image={recipe.image}
+                    servingSize={recipe.servingSize}
+                    prepTime={recipe.prepTime}
+                    cookingTime={recipe.cookingTime}
+                    author={recipe.author.name || 'Unknown'}
+                  />
+                </React.Fragment>
               ))}
             </div>
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 

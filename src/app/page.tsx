@@ -1,9 +1,9 @@
-import Recipe from '@/components/Recipe';
+import RecipePage from '@/components/RecipePage';
 
 export default async function Home() {
   return (
-    <main>
-      <Recipe />
+    <main className="bg-stone-300 ">
+      <RecipePage />
     </main>
   );
 }
