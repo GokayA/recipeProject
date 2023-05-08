@@ -3,6 +3,8 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import CookSVG from '../../public/cook.svg';
+import LogoSVG from '../../public/logo.svg';
 import SignInButton from './SignInButton';
 import SignOutButton from './SignOutButton';
 
@@ -13,11 +15,11 @@ export default function Navbar() {
   return (
     <header className="bg-gray-900 border-b border-green-400 text-white ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex  items-center h-16">
-        <div className="flex  justify-end items-center">
+        <div className="flex justify-end items-center">
           <Link href="/">
             <Image
               className="h-8 w-auto"
-              src="https://placehold.co/400.png"
+              src={LogoSVG}
               width={100}
               height={100}
               alt="Logo"
@@ -29,6 +31,13 @@ export default function Navbar() {
               className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
             >
               Add Recipes
+              <Image
+                className="h-8 w-auto px-2"
+                src={CookSVG}
+                width={100}
+                height={100}
+                alt="Logo"
+              />
             </Link>
             {/* <Link
               className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"

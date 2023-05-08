@@ -3,14 +3,13 @@ import DeleteButton from '@/components/DeleteButton';
 import { Recipe } from '@prisma/client';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
 function RecipeDetails({ params }: { params: { id: string } }) {
-  const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const router = useRouter();
-
+  const { data: session } = useSession();
   const { isLoading, data } = useQuery<{
     recipe: Recipe;
     newInstructions: string[];
@@ -24,6 +23,11 @@ function RecipeDetails({ params }: { params: { id: string } }) {
     },
   });
 
+  //########################### Check author section ###########################/
+
+  const isAuthor = session?.user.id === data?.recipe.authorId;
+
+  //########################### Delete section ###########################/
   const deleteRecipe = useMutation({
     mutationKey: ['deleteRecipe', params.id],
     mutationFn: async () => {
@@ -46,6 +50,8 @@ function RecipeDetails({ params }: { params: { id: string } }) {
     }
   };
 
+  //############### Check loading or is data exist section ###############/
+
   if (isLoading) {
     return <div className="min-h-screen "></div>;
   }
@@ -53,20 +59,28 @@ function RecipeDetails({ params }: { params: { id: string } }) {
   if (!data) {
     return <div>No recipe found</div>;
   }
+
   const { recipe, newInstructions } = data;
+
+  //########################### filter data for search  ###########################/
 
   const filteredInstructions = newInstructions.filter(
     (instruction: string) => instruction !== ''
   );
+
   return (
     <div className=" min-h-screen max-w-2xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="py-12">
         <div className="flex justify-between">
           <h1 className="text-3xl font-bold text-gray-900">{recipe.title}</h1>
-          <DeleteButton
-            onClick={deleteHandler}
-            className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-black"
-          />
+          {isAuthor ? (
+            <DeleteButton
+              onClick={deleteHandler}
+              className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-black"
+            />
+          ) : (
+            ''
+          )}
         </div>
 
         <div className="mt-4 flex items-center justify-between">
