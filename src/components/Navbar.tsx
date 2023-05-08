@@ -9,17 +9,11 @@ import SignOutButton from './SignOutButton';
 export default function Navbar() {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (event: any) => {
-    event.preventDefault();
-    console.log(`navbar Searching for: ${searchQuery}`);
-  };
 
   return (
     <header className="bg-gray-900 border-b border-green-400 text-white ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        <div className="flex items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex  items-center h-16">
+        <div className="flex  justify-end items-center">
           <Link href="/">
             <Image
               className="h-8 w-auto"
@@ -50,42 +44,7 @@ export default function Navbar() {
             </Link> */}
           </div>
         </div>
-        <div className="flex items-center justify-center flex-grow">
-          <form onSubmit={handleSearch} className="w-3/4">
-            <div className="relative">
-              <label htmlFor="search" className="sr-only">
-                Search
-              </label>
-              <input
-                id="search"
-                name="search"
-                type="search"
-                placeholder="Search"
-                className="block w-full text-gray-900 font-bold bg-gray-100 border-gray-300 rounded-md py-2 px-4 sm:text-sm"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <div className="absolute inset-y-0 right-0 flex items-center">
-                <button
-                  type="submit"
-                  className="bg-white border border-gray-300 rounded-r-md px-4 py-2 hover:bg-gray-50"
-                >
-                  <svg
-                    className="w-5 h-5 text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M14.293 14.293a1 1 0 01-1.414 0l-3.022-3.022A5.986 5.986 0 017 10a6 6 0 1111.265 2.265l3.022 3.022a1 1 0 010 1.414l-.708.708a1 1 0 01-1.414 0l-.708-.708zm-7.207-1.207a4 4 0 100-8 4 4 0 000 8z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </form>
+        <div className="flex items-center justify-end  flex-grow">
           <div className="hidden md:ml-6 sm:flex sm:space-x-8">
             {session ? (
               <>
