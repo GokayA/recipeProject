@@ -1,5 +1,5 @@
 'use client';
-import { type Recipe, type User } from '@prisma/client';
+import type { Recipe, User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
