@@ -1,11 +1,24 @@
 'use client';
 import DeleteButton from '@/components/DeleteButton';
-import { Recipe } from '@prisma/client';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+interface Recipe {
+  id: string;
+  title: string;
+  servingSize: string;
+  prepTime: string;
+  cookingTime: string;
+  description: string;
+  image: string;
+  instructions: string;
+  isPublic: boolean;
+  authorId: string;
+  createdAt: Date;
+}
 
 function RecipeDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
