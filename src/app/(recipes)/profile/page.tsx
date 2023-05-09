@@ -1,12 +1,33 @@
 'use client';
 import RecipeCard from '@/components/RecipeCard';
 import SignInButton from '@/components/SignInButton';
-import type { Recipe, User } from '@prisma/client';
+
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
+interface Recipe {
+  id: string;
+  title: string;
+  servingSize: string;
+  prepTime: string;
+  cookingTime: string;
+  description: string;
+  image: string;
+  instructions: string;
+  isPublic: boolean;
+  authorId: string;
+  createdAt: Date;
+}
+
+interface User {
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+}
 interface RecipeWithAuthor extends Recipe {
   author: User;
 }

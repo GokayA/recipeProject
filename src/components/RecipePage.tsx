@@ -1,14 +1,32 @@
 'use client';
-import type { Recipe, User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import RecipeCard from './RecipeCard';
-interface RecipePageProps {
-  searchQuery: string;
-  handleSearch: () => void;
+
+interface Recipe {
+  id: string;
+  title: string;
+  servingSize: string;
+  prepTime: string;
+  cookingTime: string;
+  description: string;
+  image: string;
+  instructions: string;
+  isPublic: boolean;
+  authorId: string;
+  createdAt: Date;
 }
+
+interface User {
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
+}
+
 interface RecipeWithAuthor extends Recipe {
   author: User;
 }
