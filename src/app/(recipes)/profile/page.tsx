@@ -50,7 +50,7 @@ const ProfilePage = () => {
       if (searchQuery === '') {
         setFilteredData(data);
       } else {
-        const filteredRecipes = data.filter((recipe: Recipe) =>
+        const filteredRecipes = data.filter((recipe) =>
           recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredData(filteredRecipes);
