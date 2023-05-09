@@ -1,7 +1,7 @@
 'use client';
 import RecipeCard from '@/components/RecipeCard';
 import SignInButton from '@/components/SignInButton';
-import { Recipe, User } from '@prisma/client';
+import { type Recipe, type User } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
