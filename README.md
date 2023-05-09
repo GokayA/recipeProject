@@ -20,3 +20,9 @@ This is a recipe food project where you can find and share your favorite recipes
 - Prisma
 - TailwindCSS
 - TypeScript
+
+## Need Todos
+
+-- Show information to user after adding a new recipe
+-- Add hot-toast notification for adding a recipe and login Errors.
+-- Better design
