@@ -48,7 +48,7 @@ const RecipePage = () => {
       if (searchQuery === '') {
         setFilteredData(data);
       } else {
-        const filteredRecipes = data.filter((recipe) =>
+        const filteredRecipes = data.filter((recipe: Recipe) =>
           recipe.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredData(filteredRecipes);
