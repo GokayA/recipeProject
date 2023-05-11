@@ -15,6 +15,7 @@ const NewRecipeForm = () => {
   const [selectedServingSize, setSelectedServingSize] = useState<string>('1-2');
   const [selectedPrepTime, setSelectedPrepTime] = useState<string>('5');
   const [selectedCookTime, setSelectedCookTime] = useState<string>('0');
+  const [message, setMessage] = useState<string>('');
 
   const handleTitleChange = (event: FormEvent<HTMLInputElement>) => {
     setTitle(event.currentTarget.value);
@@ -50,10 +51,23 @@ const NewRecipeForm = () => {
         prepTime: selectedPrepTime,
         cookingTime: selectedCookTime,
       });
+      if (response.status === 201) {
+        setMessage('Recipe added successfully');
+        setErrorMessage('');
+        setTitle('');
+        setDescription('');
+        setImage('');
+        setInstructions('');
+        setIsPublic(false);
+        setSelectedServingSize('1-2');
+        setSelectedPrepTime('5');
+        setSelectedCookTime('0');
+      } else {
+      }
     } catch (error) {
       if (error instanceof AxiosError) {
         console.error(error.response?.data);
-        setErrorMessage('An error occurred while submitting the recipe');
+        setErrorMessage('Failed to create Recipe');
       }
     }
   };
@@ -230,6 +244,7 @@ const NewRecipeForm = () => {
           {errorMessage && (
             <div className="text-red-500 mb-4">{errorMessage}</div>
           )}
+          {message && <div className="text-green-500 mb-4">{message}</div>}
           <button
             type="submit"
             className="bg-gray-900 hover:bg-green-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

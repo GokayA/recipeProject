@@ -12,6 +12,9 @@ const nextConfig = {
       {
         hostname: 'images.deliveryhero.io',
       },
+      {
+        hostname: 'images.immediate.co.uk',
+      },
     ],
   },
 };
