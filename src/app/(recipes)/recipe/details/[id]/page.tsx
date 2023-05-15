@@ -141,11 +141,9 @@ function RecipeDetails({ params }: { params: { id: string } }) {
             <Image
               src={recipe.image}
               alt={`Image for ${recipe.title}`}
-              width="0"
-              height="0"
-              sizes="15vw"
-              className="w-3/5 h-auto"
-              priority
+              width={600}
+              height={400}
+              className="mb-4"
             />
             <h1 className="mt-4 font-bold text-lg text-gray-900">
               Description
