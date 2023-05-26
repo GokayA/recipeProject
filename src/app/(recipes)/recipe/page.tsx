@@ -95,6 +95,7 @@ const NewRecipeForm = () => {
             </label>
             <input
               type="text"
+              required
               id="title"
               value={title}
               onChange={handleTitleChange}
@@ -204,6 +205,7 @@ const NewRecipeForm = () => {
               Image URL
             </label>
             <input
+              required
               type="text"
               id="image"
               value={image}
@@ -233,6 +235,7 @@ const NewRecipeForm = () => {
               Public?
             </label>
             <input
+              required
               type="checkbox"
               id="isPublic"
               checked={isPublic}

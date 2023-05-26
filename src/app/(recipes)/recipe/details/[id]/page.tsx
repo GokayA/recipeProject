@@ -30,7 +30,7 @@ function RecipeDetails({ params }: { params: { id: string } }) {
     queryKey: ['Recipe', params.id],
     queryFn: async () => {
       const { data } = await axios.get(`/api/recipe/${params.id}/`);
-      const newInstructions = await data.instructions.split(' ');
+      const newInstructions = await data.instructions.split('\n');
 
       return { recipe: data as Recipe, newInstructions };
     },

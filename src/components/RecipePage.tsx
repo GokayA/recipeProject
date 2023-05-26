@@ -83,6 +83,7 @@ const RecipePage = () => {
                 Search
               </label>
               <input
+                required
                 id="search"
                 name="search"
                 type="search"
