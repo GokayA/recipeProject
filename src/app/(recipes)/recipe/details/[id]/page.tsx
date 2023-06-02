@@ -137,14 +137,17 @@ function RecipeDetails({ params }: { params: { id: string } }) {
           </div>
         </div>
         <div className="mt-8">
-          <div className="prose max-w-none">
-            <Image
-              src={recipe.image}
-              alt={`Image for ${recipe.title}`}
-              width={600}
-              height={400}
-              className="mb-4"
-            />
+          <div className=" prose max-w-none">
+            <div className="relative h-96 w-96">
+              <Image
+                priority
+                sizes="384px,384px"
+                src={recipe.image}
+                alt={`Image for ${recipe.title}`}
+                fill
+                className="mb-4"
+              />
+            </div>
             <h1 className="mt-4 font-bold text-lg text-gray-900">
               Description
             </h1>
@@ -153,7 +156,7 @@ function RecipeDetails({ params }: { params: { id: string } }) {
             <h2 className="mt-4 font-bold text-lg text-gray-900">
               Instructions
             </h2>
-            <div className="mt-4">
+            <div className="mt-12">
               <ul className="list-disc pl-8">
                 {filteredInstructions.map((instruction, index) => (
                   <li key={`${instruction}-${index}`} className="mb-2">
