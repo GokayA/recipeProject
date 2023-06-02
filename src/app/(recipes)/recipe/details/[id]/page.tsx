@@ -138,7 +138,7 @@ function RecipeDetails({ params }: { params: { id: string } }) {
         </div>
         <div className="mt-8">
           <div className=" prose max-w-none">
-            <div className="relative h-96 w-96">
+            <div className="relative h-80 w-80">
               <Image
                 priority
                 sizes="384px,384px"

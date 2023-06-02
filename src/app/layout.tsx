@@ -1,14 +1,10 @@
 'use client';
 import Footer from '@/components/Footer';
-import { Analytics } from '@vercel/analytics/react';
-
 import Navbar from '@/components/Navbar';
+import { Analytics } from '@vercel/analytics/react';
 import { SessionProvider, useSession } from 'next-auth/react';
-import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import Providers from './providers';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -17,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <SessionProvider>
           <Providers>
             <Navbar />

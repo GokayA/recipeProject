@@ -26,22 +26,24 @@ const RecipeCard = ({
   href,
 }: RecipeCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6 border-green-400 border-b">
-      <Link href={href}>
-        <div className="relative w-96 h-80 mb-2">
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6 border-green-400 border-b  max-w-96 max-h-full flex flex-col">
+      <Link href={href} className="flex-grow">
+        <div className="max-w-full min-h-60 mb-2">
           <Image
             src={image}
             priority
+            width={400}
+            height={400}
             alt="foodImage"
-            fill
-            sizes="24rem,20rem"
           />
         </div>
-        <h1 className="text-2xl font-bold mb-2">{title}</h1>
+        <h1 className="text-2xl font-bold mb-2 flex-grow">{title}</h1>
       </Link>
-      <p className="text-gray-700 text-lg mb-4">
-        {servingSize} servings | {prepTime} min prep | {cookingTime} min cook
-      </p>
+      <div className="flex flex-wrap">
+        <p className="text-gray-700 text-lg mb-4">
+          {servingSize} servings | {prepTime} min prep | {cookingTime} min cook
+        </p>
+      </div>
       <hr className="my-4" />
       <p className="text-gray-700 text-lg">By {author}</p>
     </div>
