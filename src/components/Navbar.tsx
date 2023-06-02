@@ -38,18 +38,6 @@ export default function Navbar() {
                 alt="Logo"
               />
             </Link>
-            {/* <Link
-              className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-              href="/categories"
-            >
-              Categories
-            </Link> */}
-            {/* <Link
-              href="/videos"
-              className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            >
-              Videos
-            </Link> */}
           </div>
         </div>
         <div className="flex items-center justify-end  flex-grow">
@@ -127,20 +115,6 @@ export default function Navbar() {
           >
             Add Recipes
           </Link>
-          {/* <Link
-            href="/categories"
-            onClick={() => setIsMenuOpen(false)}
-            className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Categories
-          </Link> */}
-          {/* <Link
-            href="/videos"
-            onClick={() => setIsMenuOpen(false)}
-            className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Videos
-          </Link> */}
           {session ? (
             <>
               <Link

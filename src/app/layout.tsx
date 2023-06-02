@@ -1,5 +1,7 @@
 'use client';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/react';
+
 import Navbar from '@/components/Navbar';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { Inter } from 'next/font/google';
@@ -20,6 +22,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             {children}
+            <Analytics />
             <Footer />
           </Providers>
         </SessionProvider>
