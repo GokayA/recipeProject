@@ -2,7 +2,7 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
-import { SessionProvider, useSession } from 'next-auth/react';
+import { SessionProvider } from 'next-auth/react';
 import '../styles/globals.css';
 import Providers from './providers';
 

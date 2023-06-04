@@ -7,7 +7,7 @@ export const metadata = {
 
 export default async function Home() {
   return (
-    <main className="bg-stone-300">
+    <main className="">
       <RecipePage />
     </main>
   );

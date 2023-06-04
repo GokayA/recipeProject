@@ -1,11 +1,11 @@
 'use client';
+import Loading from '@/components/Loading';
 import RecipeCard from '@/components/RecipeCard';
 import SignInButton from '@/components/SignInButton';
-
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Recipe {
   id: string;
@@ -45,6 +45,7 @@ const ProfilePage = () => {
       return data;
     }
   );
+
   useEffect(() => {
     if (data) {
       if (searchQuery === '') {
@@ -60,7 +61,7 @@ const ProfilePage = () => {
 
   if (!session) {
     return (
-      <div className="min-h-screen text-center px-10 py-10 text-red-800 text-bold text-2xl">
+      <div className="min-h-screen w-full text-center items-center justify-center px-10 py-10 text-bold text-2xl">
         <h1>You must be logged in</h1>
         <SignInButton className="border-transparent rounded-full my-10 bg-slate-800 text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
       </div>
@@ -68,8 +69,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col ">
-      <main className="flex-grow">
+    <main className="min-h-screen flex flex-col">
+      <div className="flex-grow ">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-row items-center justify-between">
             <div className="flex items-center">
@@ -78,16 +79,15 @@ const ProfilePage = () => {
                 height="48"
                 viewBox="0 96 960 960"
                 width="48"
-                className="mt-5 mr-5"
+                className="mt-5 mr-5 "
               >
                 <path
                   fill="#1F2937"
-                  d="m480 935-41-37q-105.768-97.121-174.884-167.561Q195 660 154 604.5T96.5 504Q80 459 80 413q0-90.155 60.5-150.577Q201 202 290 202q57 0 105.5 27t84.5 78q42-54 89-79.5T670 202q89 0 149.5 60.423Q880 322.845 880 413q0 46-16.5 91T806 604.5Q765 660 695.884 730.439 626.768 800.879 521 898l-41 37Zm0-79q101.236-92.995 166.618-159.498Q712 630 750.5 580t54-89.135q15.5-39.136 15.5-77.72Q820 347 778 304.5T670.225 262q-51.524 0-95.375 31.5Q531 325 504 382h-49q-26-56-69.85-88-43.851-32-95.375-32Q224 262 182 304.5t-42 108.816Q140 452 155.5 491.5t54 90Q248 632 314 698t166 158Zm0-297Z"
+                  d="m165 936-42-42 420-420q-22-48-10-99.5t57-96.5q45-44 109-56.5T804 250q42 42 28.5 105T772 466q-41 42-91.5 55t-94.5-6l-67 67 312 312-42 42-312-312-312 312Zm125-351L171 466q-51-51-53-121t46-124l245 245-119 119Z"
                 />
               </svg>
-
               <h1 className="py-10 text-2xl font-bold text-gray-800 leading-6">
-                Your Recipes
+                All Food Recipes
               </h1>
             </div>
             <div className="flex-grow  text-center">
@@ -95,6 +95,7 @@ const ProfilePage = () => {
                 Search
               </label>
               <input
+                required
                 id="search"
                 name="search"
                 type="search"
@@ -105,28 +106,29 @@ const ProfilePage = () => {
               />
             </div>
           </div>
-          <hr className="border-1 border-gray-800 my-8" />
+          <hr className="flex justify-center border-1 border-gray-800 my-8" />
           {isLoading ? (
-            <div>{/* */}</div>
+            <Loading />
           ) : (
-            <div className="flex flex-wrap gap-4 ">
-              {filteredData?.map((recipe: RecipeWithAuthor) => (
-                <RecipeCard
-                  href={`/recipe/details/${recipe.id}`}
-                  key={recipe.id}
-                  title={recipe.title}
-                  image={recipe.image}
-                  servingSize={recipe.servingSize}
-                  prepTime={recipe.prepTime}
-                  cookingTime={recipe.cookingTime}
-                  author={recipe.author.name || 'Unknown'}
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {filteredData.map((recipe: RecipeWithAuthor) => (
+                <React.Fragment key={recipe.id}>
+                  <RecipeCard
+                    href={`/recipe/details/${recipe.id}`}
+                    title={recipe.title}
+                    image={recipe.image}
+                    servingSize={recipe.servingSize}
+                    prepTime={recipe.prepTime}
+                    cookingTime={recipe.cookingTime}
+                    author={recipe.author.name || 'Unknown'}
+                  />
+                </React.Fragment>
               ))}
             </div>
           )}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 
