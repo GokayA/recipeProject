@@ -1,6 +1,6 @@
 # Recipe Food Project
 
-![Project View](https://i.imgur.com/58brfYe.png)
+![Project View](https://raw.githubusercontent.com/GokayA/Portfolio/main/public/recipeproject.png)
 
 This is a recipe food project where you can find and share your favorite recipes. The project is deployed on Vercel and you can access it through this link: [https://recipe-project-omega.vercel.app/](https://recipe-project-omega.vercel.app/)
 
