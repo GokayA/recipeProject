@@ -7,6 +7,8 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 
+export const revalidate = 0;
+
 interface Recipe {
   id: string;
   title: string;
