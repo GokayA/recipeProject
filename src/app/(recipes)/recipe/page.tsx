@@ -74,7 +74,7 @@ const NewRecipeForm = () => {
 
   if (!session) {
     return (
-      <div className=" min-h-screen text-center px-10 py-10 text-red-800 text-bold text-2xl">
+      <div className="min-h-screen text-center px-10 py-10 text-red text-bold text-2xl">
         <h1>You must be logged in</h1>
         <SignInButton className="border-transparent rounded-full my-10 bg-slate-800 text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
       </div>
@@ -82,14 +82,14 @@ const NewRecipeForm = () => {
   }
 
   return (
-    <div className="  flex flex-col min-h-screen ">
+    <div className="flex flex-col min-h-screen ">
       <div className="flex-grow flex flex-col justify-center items-center  ">
         <h1 className="text-3xl py-10">Recipe Information</h1>
         <form onSubmit={handleSubmit} className="w-full max-w-md">
           <div className="mb-4">
             <label
               htmlFor="title"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Title
             </label>
@@ -99,21 +99,21 @@ const NewRecipeForm = () => {
               id="title"
               value={title}
               onChange={handleTitleChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
 
           <div className="mb-4">
             <label
               htmlFor="serving-size"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Serving Size(Choose)
             </label>
             <select
               id="serving-size"
               name="serving-size"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
               value={selectedServingSize}
               onChange={(event) =>
                 setSelectedServingSize(event.currentTarget.value)
@@ -132,14 +132,14 @@ const NewRecipeForm = () => {
           <div className="mb-4">
             <label
               htmlFor="serving-size"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Preparation Time(Choose)
             </label>
             <select
               id="serving-size"
               name="serving-size"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
               value={selectedPrepTime}
               onChange={(event) =>
                 setSelectedPrepTime(event.currentTarget.value)
@@ -158,14 +158,14 @@ const NewRecipeForm = () => {
           <div className="mb-4">
             <label
               htmlFor="serving-size"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Cooking Time(Choose)
             </label>
             <select
               id="serving-size"
               name="serving-size"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
               value={selectedCookTime}
               onChange={(event) =>
                 setSelectedCookTime(event.currentTarget.value)
@@ -186,7 +186,7 @@ const NewRecipeForm = () => {
           <div className="mb-4">
             <label
               htmlFor="description"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Description
             </label>
@@ -194,13 +194,13 @@ const NewRecipeForm = () => {
               id="description"
               value={description}
               onChange={handleDescriptionChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
             ></textarea>
           </div>
           <div className="mb-4">
             <label
               htmlFor="image"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Image URL
             </label>
@@ -210,13 +210,13 @@ const NewRecipeForm = () => {
               id="image"
               value={image}
               onChange={handleImageChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="instructions"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Instructions
             </label>
@@ -224,13 +224,13 @@ const NewRecipeForm = () => {
               id="instructions"
               value={instructions}
               onChange={handleInstructionsChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary-content leading-tight focus:outline-none focus:shadow-outline"
             ></textarea>
           </div>
           <div className="mb-4">
             <label
               htmlFor="isPublic"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-primary font-bold mb-2"
             >
               Public?
             </label>
@@ -247,10 +247,10 @@ const NewRecipeForm = () => {
           {errorMessage && (
             <div className="text-red-500 mb-4">{errorMessage}</div>
           )}
-          {message && <div className="text-green-500 mb-4">{message}</div>}
+          {message && <div className=" mb-4">{message}</div>}
           <button
             type="submit"
-            className="bg-gray-900 hover:bg-green-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="btn bg-primary text-primary-content font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Add Recipe
           </button>

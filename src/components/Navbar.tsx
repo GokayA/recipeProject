@@ -12,52 +12,60 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gray-900 border-b border-green-400 text-white ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex  items-center h-16">
-        <div className="flex justify-end items-center">
-          <Link href="/">
+    <header className="bg-primary p-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16">
+        <div className="flex justify-end items-center ">
+          <Link href="/" className="btn  glass h-10">
             <Image
-              className="h-8 w-auto"
+              className="h-10 w-auto"
               src={LogoSVG}
-              width={100}
-              height={100}
+              width={300}
+              height={300}
               alt="Logo"
             />
           </Link>
-          <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <div className="hidden sm:ml-6 sm:flex sm:space-x-8 ">
             <Link
               href="/recipe"
-              className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+              className="h-10 text-primary-content btn glass border-transparent inline-flex items-center px-1 border-b-2 text-lg font-medium"
             >
-              Add Recipes
               <Image
-                className="h-8 w-auto px-2"
+                className="h-12 w-auto px-2 primary"
                 src={CookSVG}
-                width={100}
-                height={100}
+                width={300}
+                height={300}
                 alt="Logo"
               />
+              Send Your Recipe
             </Link>
           </div>
         </div>
         <div className="flex items-center justify-end  flex-grow">
           <div className="hidden md:ml-6 sm:flex sm:space-x-8">
             {session ? (
-              <>
-                <Link
-                  href="/profile"
-                  onClick={() => setIsMenuOpen(false)}
-                  className=" border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                >
-                  Profile
-                </Link>
-                <SignOutButton className=" border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" />
-              </>
+              <ul className="menu menu-horizontal ">
+                <li>
+                  <Link
+                    href="/profile"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="border-transparent text-primary-content  inline-flex items-center px-2  border-b-2 text-lg font-medium"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <SignOutButton className=" border-transparent text-primary-content   inline-flex items-center px-2  border-b-2 text-lg " />
+                </li>
+              </ul>
             ) : (
-              <SignInButton
-                onClick={() => setIsMenuOpen(false)}
-                className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium "
-              />
+              <ul className="menu menu-horizontal ">
+                <li>
+                  <SignInButton
+                    onClick={() => setIsMenuOpen(false)}
+                    className=" border-transparent text-primary-content inline-flex items-center px-2  border-b-2 text-lg font-medium "
+                  />
+                </li>
+              </ul>
             )}
           </div>
         </div>
@@ -66,7 +74,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             type="button"
-            className="bg-white p-2 rounded-md inline-flex items-center justify-center text-gray-900 hover:text-green-300 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            className="bg-white p-2 rounded-md inline-flex items-center justify-center text-gray-900  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
             aria-expanded="false"
           >
             <span className="sr-only">Open main menu</span>
@@ -111,23 +119,23 @@ export default function Navbar() {
           <Link
             href="/recipe"
             onClick={() => setIsMenuOpen(false)}
-            className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            className="border-transparent text-white menu-horizontal block px-3 py-2 rounded-md text-base font-medium"
           >
-            Add Recipes
+            Send Your Recipe
           </Link>
           {session ? (
             <>
               <Link
                 href="/profile"
                 onClick={() => setIsMenuOpen(false)}
-                className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+                className="border-transparent text-white menu-horizontal block px-3 py-2 rounded-md text-base font-medium"
               >
                 Profile
               </Link>
-              <SignOutButton className="border-transparent text-white hover:text-green-300 hover:border-gray-300 block px-3 py-2 rounded-md text-base font-medium" />
+              <SignOutButton className="border-transparent text-white menu-horizontal block px-3 py-2 rounded-md text-base font-medium" />
             </>
           ) : (
-            <SignInButton className="border-transparent text-white hover:text-green-300 hover:border-gray-300 inline-flex items-center px-3 py-2 border-b-2 " />
+            <SignInButton className="border-transparent text-white menu-horizontal inline-flex items-center px-3 py-2 border-b-2 " />
           )}
         </div>
       </div>

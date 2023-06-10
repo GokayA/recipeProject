@@ -31,9 +31,7 @@ const Footer = () => {
         )}
       </div>
       <div className="container mx-auto flex flex-wrap justify-between mt-4">
-        <div className="text-lg">
-          <a href="/about">About</a>
-        </div>
+        <div className="text-lg">{/* <a href="/about">About</a> */}</div>
         <div className="flex items-center">
           <Link href="https://instagram.com">
             <Image
