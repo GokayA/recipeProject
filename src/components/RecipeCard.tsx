@@ -26,9 +26,9 @@ const RecipeCard = ({
   href,
 }: RecipeCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6 border-green-400 border-b  max-w-96 max-h-full flex flex-col">
+    <div className="card max-w-96 glass bg-slate-300">
       <Link href={href} className="flex-grow">
-        <div className="max-w-full min-h-60 mb-2">
+        <figure className="max-w-full min-h-60 mb-2">
           <Image
             src={image}
             priority
@@ -36,16 +36,18 @@ const RecipeCard = ({
             height={400}
             alt="foodImage"
           />
-        </div>
-        <h1 className="text-2xl font-bold mb-2 flex-grow">{title}</h1>
+        </figure>
       </Link>
-      <div className="flex flex-wrap">
-        <p className="text-gray-700 text-lg mb-4">
-          {servingSize} servings | {prepTime} min prep | {cookingTime} min cook
-        </p>
+      <div className="card-body">
+        <h2 className="card-title">{title}</h2>
+
+        <div className="card-actions justify-end">
+          <div className="badge badge-outline ">{servingSize} servings</div>
+          <div className="badge badge-outline">{prepTime} min prep</div>
+          <div className="badge badge-outline">{cookingTime} min cook</div>
+        </div>
+        <p> by {author}</p>
       </div>
-      <hr className="my-4" />
-      <p className="text-gray-700 text-lg">By {author}</p>
     </div>
   );
 };
