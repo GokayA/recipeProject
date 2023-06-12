@@ -37,28 +37,28 @@ const Footer = () => {
             <Image
               src={instagramSVG}
               alt="instagram svg"
-              className="h-6 w-6 mr-4 text-gray-400 hover:text-gray-100"
+              className="h-6 w-6 mr-4 "
             />
           </Link>
-          <Link href="https://twitter.com">
+          <Link target="_blank" href="https://twitter.com">
             <Image
               src={twitterSVG}
               alt="twitter svg"
-              className="h-6 w-6 mr-4 text-gray-400 hover:text-gray-100"
+              className="h-6 w-6 mr-4 "
             />
           </Link>
-          <Link href="https://youtube.com">
+          <Link target="_blank" href="https://youtube.com">
             <Image
               src={youtubeSVG}
               alt="youtube svg"
-              className="h-6 w-6 mr-4 text-gray-400 hover:text-gray-100"
+              className="h-6 w-6 mr-4 "
             />
           </Link>
-          <Link href="https://facebook.com">
+          <Link target="_blank" href="https://facebook.com">
             <Image
               src={facebookSVG}
               alt="facebook svg"
-              className="h-6 w-6 mr-4 text-gray-400 hover:text-gray-100"
+              className="h-6 w-6 mr-4"
             />
           </Link>
         </div>
